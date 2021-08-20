@@ -1,0 +1,214 @@
+body {
+  background-image: url('../img/jianbian.c2b27b53.png');
+  background-size: 100% 100%;
+  width: 100vw;
+  overflow: hidden;
+  height: 100vh;
+}
+h1 {
+  z-index: 100;
+  top: 24px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-image: linear-gradient(
+    to right,
+    #9ed110,
+    #50b517,
+    #179067,
+    #476eaf,
+    #9f49ac,
+    #cc42a2,
+    #ff3ba7,
+    #ff5800,
+    #ff8100,
+    #feac00,
+    #ffcc00,
+    #ede604
+  );
+}
+.tips {
+  position: absolute;
+  top: 344px;
+  font-size: 13px;
+  color: #db5f5f;
+  left: 207px;
+}
+.success {
+  position: absolute;
+  top: 450px;
+  left: 11px;
+  color: #67c23a;
+  font-weight: bold;
+  font-size: 17px;
+  display: none;
+}
+.info {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 128px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 13px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 10px 0;
+  cursor: pointer;
+}
+.info:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.version {
+  margin-bottom: 7px;
+}
+.success img {
+  width: 30px;
+  vertical-align: middle;
+}
+.links {
+  position: absolute;
+  top: 0;
+  left: 214px;
+  color: #67c23a;
+  width: 1000px;
+  font-weight: bold;
+  font-size: 17px;
+}
+.dialog {
+  background: rgba(0, 0, 0, 0.3);
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 1000;
+  position: fixed;
+  display: none;
+}
+.content {
+  z-index: 10;
+  color: #ccc9c9;
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 100px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  box-shadow: 0 2px 12px 0 rgba(255, 255, 255, 0.17);
+}
+.text {
+  position: absolute;
+  left: 50px;
+  top: 221px;
+  font-size: 20px;
+}
+.review {
+  position: absolute;
+  left: 50px;
+  top: 380px;
+  font-size: 20px;
+}
+.reviewLinks {
+  position: absolute;
+  left: 200px;
+  top: 380px;
+  font-size: 20px;
+}
+.text1 {
+  position: absolute;
+  left: 213px;
+  border-radius: 10px;
+  border: 2px dashed #ccc9c9;
+  width: 271px;
+  height: 139px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  flex-direction: column;
+  top: 169px;
+}
+.text1 img {
+  width: 50px;
+  margin-bottom: 10px;
+}
+.file {
+  position: absolute;
+  left: 226px;
+  top: 169px;
+  padding: 50px 6px;
+  opacity: 0;
+  cursor: pointer;
+}
+a {
+  color: #fff;
+  position: absolute;
+  top: 200px;
+}
+.upload {
+  width: 244px;
+  position: absolute;
+  bottom: 100px;
+  background: #409eff;
+  padding: 10px 10px;
+  text-align: center;
+  left: 212px;
+  border-radius: 6px;
+  font-weight: 500;
+  color: #fff;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  display: none;
+  user-select: none;
+}
+.upload:hover {
+  background: #5dadff;
+}
+
+/* 进度条 */
+.progress {
+  width: 500px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+}
+.progress-outer {
+  width: 100%;
+  height: 23px;
+  background-color: rgb(235, 238, 245, 0.8);
+  border-radius: 25px;
+  position: relative;
+  box-shadow: 0 2px 12px 0 #b4b1b1;
+}
+
+.progress-outer .progress-inner {
+  position: absolute;
+  width: 4%; /* 只需要把这个宽度动态即可 */
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: #409eff;
+  border-radius: 25px;
+  transition: width 0.6s ease;
+  text-align: right;
+  line-height: 21px;
+}
+
+.progress-outer .progress-inner .progress-_innerText {
+  margin-right: 10px;
+  color: white;
+  font-size: 12px;
+  user-select: none;
+}
