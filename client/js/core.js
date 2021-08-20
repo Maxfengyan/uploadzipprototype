@@ -1,7 +1,11 @@
 var file;
 var progress = new Progress();
 function getFile(e) {
-  console.log(e.files);
+  if (e.files[0].name.indexOf('.zip') === -1) {
+    alert('必须上传zip格式文件');
+    e.value = '';
+    return false;
+  }
   if (e.files && e.files[0]) {
     var name = e.files[0].name;
     file = e.files[0];
@@ -29,7 +33,7 @@ function startUpload() {
 }
 
 function enterGitlab() {
-  window.location.href = 'git';
+  window.location.href = 'http://10.10.8.43:50789/mafengyan/uploadzip';
 }
 function bytueAjaxJspPost(_url, obj, success, contentType) {
   var xmlhttp = null;
