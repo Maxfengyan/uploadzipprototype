@@ -50,7 +50,7 @@ pm2 start dist/main.js
 
 5.判断上传的zip内文件夹路径，通过接口返回原型访问页面路径
 
-6.deleloper们根据返回的页面路径访问原型index.html
+6.developer们根据返回的页面路径访问原型index.html
 
 
 ##### 涉及技术栈
