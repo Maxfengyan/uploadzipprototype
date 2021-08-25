@@ -1,7 +1,6 @@
 /* eslint-disable */
 
 import { Injectable } from '@nestjs/common';
-import { join } from 'path';
 const fs = require('fs');
 const AdmZip = require('adm-zip');
 const iconv = require('iconv-lite');
@@ -9,7 +8,6 @@ const iconv = require('iconv-lite');
 const nginxUrl = 'http://10.10.8.73:9598/';
 const dirPath = '/data/nginxapps/BossYuanXing/boss.zip';
 const reviewPath = '/data/nginxapps/BossYuanXing/';
-// const dirPath = join(__dirname, '..', 'upload', `boss.zip`);
 
 @Injectable()
 export class AppService {
