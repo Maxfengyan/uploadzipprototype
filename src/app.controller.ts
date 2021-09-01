@@ -16,4 +16,10 @@ export class AppController {
   UploadedFile(@UploadedFile() file) {
     return this.appService.uploadFile(file.buffer);
   }
+
+  @Post('uploadexcel')
+  @UseInterceptors(FileInterceptor('file')) // file对应HTML表单的name属性
+  UploadExcel(@UploadedFile() file) {
+    return this.appService.uploadExcel(file.buffer);
+  }
 }

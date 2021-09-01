@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div class="content">
+      <h1>百途接口文档预览系统</h1>
+      <span class="text">上传原型:</span>
+      <span class="text1">
+        <div id="uploadFile">点击上传</div>
+      </span>
+      <input class="file" accept=".xlsm" type="file" onchange="getFile(this)" />
+      <div class="tips">
+        *上传文件仅限zip格式，zip根文件夹名称最好不要带中文
+      </div>
+      <span class="success"
+        ><img src="./img/success.png" />上传成功!访问地址为：<a
+          class="links"
+        ></a
+      ></span>
+      <div class="upload" onclick="startUpload()">开始上传</div>
+      <div class="info" onclick="enterGitlab()">
+        <div class="version">version:0.0.1</div>
+        <div class="frame">frame:nestJs</div>
+      </div>
+    </div>
+    <div class="dialog">
+      <!-- 最外层容器宽度 -->
+      <div class="progress">
+        <!-- 进度条外层 -->
+        <div class="progress-outer">
+          <!-- 进度条内层 -->
+          <div class="progress-inner">
+            <!-- 进度条文本 -->
+            <span class="progress-_innerText">4%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./js/excel.js"></script>
+  </body>
+</html>
