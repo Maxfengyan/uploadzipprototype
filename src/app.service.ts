@@ -4,17 +4,17 @@ import { Injectable } from '@nestjs/common';
 const fs = require('fs');
 const AdmZip = require('adm-zip');
 const iconv = require('iconv-lite');
-// const Excel = require('exceljs');
+const Excel = require('exceljs');
 
-const nginxUrl = 'http://10.10.8.73:9598/';
-const dirPath = '/data/nginxapps/BossYuanXing/boss.zip';
-const reviewPath = '/data/nginxapps/BossYuanXing/';
-/* const dirPath = './file/boss.zip';
-const reviewPath = './file/'; */
-
+// zip上传预览
 @Injectable()
 export class AppService {
   uploadFile(buffer) {
+    const nginxUrl = 'http://10.10.8.73:9598/';
+    const dirPath = '/data/nginxapps/BossYuanXing/boss.zip';
+    const reviewPath = '/data/nginxapps/BossYuanXing/';
+    /* const dirPath = './file/boss.zip';
+      const reviewPath = './file/'; */
     // 获取buffer读入zip
     const zip = new AdmZip();
     zip.writeZip(dirPath);
@@ -34,54 +34,80 @@ export class AppService {
 
     return nginxUrl + dirpathName;
   }
+
+  // excel上传预览
+  async uploadExcel(buffer, originalname) {
+    const dirPath = './file/' + originalname;
+    fs.writeFileSync(dirPath, buffer);
+    return 'success';
+  }
+
+  async readExcel() {
+    const dirname = 'bcbs_计费营帐管理系统_接口参数一览表 -(2).xlsm';
+    const buffers = fs.readFileSync('./file/' + dirname);
+    const workbook = new Excel.Workbook();
+    await workbook.xlsx.load(buffers);
+    var workbookArr = [];
+
+    workbook.eachSheet(function (worksheet, sheetId) {
+      let data = [];
+      // if (worksheet.name == '修改权重配置信息接口') {
+      const defaultHeight = worksheet.properties.defaultRowHeight;
+      const defaultWidth = worksheet.properties.defaultColWidth;
+
+      worksheet.eachRow(function (row, rowNumber) {
+        var cellItem = [];
+        row.eachCell({ includeEmpty: true }, function (cell, colNumber) {
+          // 比对是不是合并单元格
+
+          if (cell.model.address === cell.master._address) {
+            // 富文本干掉提取文字
+            if (
+              typeof cell.value === 'object' &&
+              cell.value &&
+              cell.value.richText
+            ) {
+              var str = '';
+
+              cell.value.richText.forEach((element) => {
+                str = str + element.text;
+              });
+              cellItem.push({
+                value: str,
+                merge: false,
+                width: cell._column.width || defaultWidth,
+                height: row.height || defaultHeight,
+                address: cell.model.address,
+              });
+            } else {
+              // 普通文字
+              cellItem.push({
+                value: cell.value,
+                merge: false,
+                width: cell._column.width || defaultWidth,
+                height: row.height || defaultHeight,
+                address: cell.model.address,
+              });
+            }
+          } else {
+            // 存个空值
+            cellItem.push({
+              value: '',
+              merge: true,
+              width: cell._column.width || defaultWidth,
+              height: row.height || defaultHeight,
+              address: cell.model.address,
+            });
+          }
+        });
+        data.push(cellItem);
+      });
+      workbookArr.push({
+        data: data,
+        name: worksheet.name,
+      });
+      // }
+    });
+    return workbookArr;
+  }
 }
-
-//   async uploadExcel(buffer) {
-//     const workbook = new Excel.Workbook();
-//     await workbook.xlsx.load(buffer);
-//     var arr = [];
-//     workbook.eachSheet(function (worksheet, sheetId) {
-//       // 如果sheet name不等于变更履历和目录的话
-//       // if (worksheet.name !== "变更履历" && worksheet.name !== "目录") {
-//       // 整理数据
-//       let data = [];
-//       if (worksheet.name == '修改权重配置信息接口') {
-//         worksheet.eachRow(function (row, rowNumber) {
-//           if (rowNumber === 4) {
-//             row.eachCell({ includeEmpty: true }, function (cell, colNumber) {
-//               // 比对是不是合并单元格
-//               // console.log(cell.style);
-//               console.log(cell.value);
-
-//               /* if(cell.model.address + cell.master._address) {
-//                 data.push({
-//                   value: cell.value,
-//                   width: cell._column.width
-//                 })
-//               }; */
-//               // console.log(cell._column.width);
-//               // if (cell.model.type)
-//               // console.log(cell.model.address + '||' + cell.model.type);
-//               // console.log(cell.model.address + '||' + cell.master);
-//             });
-//           }
-
-//           // arr.push(JSON.stringify(row.values));
-//         });
-//       }
-//     });
-
-//     /* worksheet.eachRow(function (row, rowNumber) {
-//       console.log('Row ' + rowNumber + ' = ' + JSON.stringify(row.values));
-//     }); */
-//     return arr;
-//     // const pathExcel = buffer.path;
-
-//     // 判断文件夹有没有层级关系
-//     /* if (dirpathName.lastIndexOf('/') !== -1) {
-//       return nginxUrl + dirpathName + 'index.html';
-//     } else {
-//       return nginxUrl + 'index.html';
-//     } */
-//   }
-// }
