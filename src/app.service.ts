@@ -5,7 +5,7 @@ const fs = require('fs');
 const AdmZip = require('adm-zip');
 const iconv = require('iconv-lite');
 const Excel = require('exceljs');
-
+const { resolve } = require('path');
 // zip上传预览
 @Injectable()
 export class AppService {
@@ -39,11 +39,13 @@ export class AppService {
   async uploadExcel(buffer, originalname) {
     const dirPath = './file/' + originalname;
     fs.writeFileSync(dirPath, buffer);
-    return 'success';
+    const resultPath =
+      '/excelreview.html?excelname=' + encodeURIComponent(originalname);
+    return resultPath;
   }
 
-  async readExcel() {
-    const dirname = 'bcbs_计费营帐管理系统_接口参数一览表 -(2).xlsm';
+  async readExcel(query) {
+    const dirname = query.excelname;
     const buffers = fs.readFileSync('./file/' + dirname);
     const workbook = new Excel.Workbook();
     await workbook.xlsx.load(buffers);
@@ -51,7 +53,6 @@ export class AppService {
 
     workbook.eachSheet(function (worksheet, sheetId) {
       let data = [];
-      // if (worksheet.name == '修改权重配置信息接口') {
       const defaultHeight = worksheet.properties.defaultRowHeight;
       const defaultWidth = worksheet.properties.defaultColWidth;
 
@@ -106,7 +107,6 @@ export class AppService {
         data: data,
         name: worksheet.name,
       });
-      // }
     });
     return workbookArr;
   }

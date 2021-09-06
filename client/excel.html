@@ -14,14 +14,12 @@
       <span class="text1">
         <div id="uploadFile">点击上传</div>
       </span>
-      <input class="file" accept=".xlsm" type="file" onchange="getFile(this)" />
+      <input class="file" accept=".xls*" type="file" onchange="getFile(this)" />
       <div class="tips">
         *上传文件仅限zip格式，zip根文件夹名称最好不要带中文
       </div>
       <span class="success"
-        ><img src="./img/success.png" />上传成功!访问地址为：<a
-          class="links"
-        ></a
+        ><img src="./img/success.png" />上传成功!<a class="links"></a
       ></span>
       <div class="upload" onclick="startUpload()">开始上传</div>
       <div class="info" onclick="enterGitlab()">

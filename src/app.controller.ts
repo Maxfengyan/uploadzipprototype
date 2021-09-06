@@ -1,8 +1,10 @@
 import {
   Controller,
   Post,
+  Get,
   UseInterceptors,
   UploadedFile,
+  Query,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { AppService } from './app.service';
@@ -23,8 +25,8 @@ export class AppController {
     return this.appService.uploadExcel(file.buffer, file.originalname);
   }
 
-  @Post('readexcel')
-  Readexcel() {
-    return this.appService.readExcel();
+  @Get('readexcel')
+  Readexcel(@Query() query) {
+    return this.appService.readExcel(query);
   }
 }

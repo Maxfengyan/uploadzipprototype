@@ -1,0 +1,158 @@
+::-webkit-scrollbar {
+  width: 5px;
+  height: 11px;
+  border: none;
+  background: #ddd !important;
+}
+::-webkit-scrollbar-track-piece {
+  border: none;
+  position: absolute;
+  padding: 0;
+  box-shadow: none;
+  background-color: #ddd;
+  border-radius: 1px;
+}
+::-webkit-scrollbar-thumb:vertical {
+  background-color: #999;
+  border-radius: 0px;
+  border: none;
+}
+::-webkit-scrollbar-thumb:horizontal {
+  background-color: #999;
+  border-radius: 0px;
+  border: none;
+}
+::-webkit-scrollbar {
+  width: 5px;
+  height: 12px;
+}
+::-webkit-scrollbar-button:vertical {
+  display: none;
+}
+::-webkit-scrollbar-track:vertical {
+  background-color: black;
+}
+::-webkit-scrollbar-track-piece {
+  background: #fff;
+}
+::-webkit-scrollbar-thumb:vertical {
+  background-color: #8e8e8e;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:vertical:hover {
+  background-color: #3b3b3b;
+}
+::-webkit-scrollbar-corner:vertical {
+  background-color: #535353;
+}
+::-webkit-scrollbar-resizer:vertical {
+  background-color: #ff6e00;
+}
+
+body,
+html,
+#app {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  /* height: 100%; */
+}
+body {
+  background-size: 100% 100%;
+}
+.row {
+  /* width: 1280px; */
+  min-height: 30px;
+  overflow: hidden;
+  border-top: 1px solid #409eff;
+  display: flex;
+  align-items: center;
+  border-right: 1px solid #409eff;
+}
+.col {
+  display: inline-block;
+  /* height: 100%; */
+  /* overflow: hidden; */
+  padding: 5px;
+  color: #000;
+  font-size: 14px;
+  box-sizing: border-box;
+  min-width: 20px;
+  /* text-overflow: ellipsis; */
+  /* white-space: nowrap; */
+  text-align: center;
+}
+pre {
+  /* height: 100%; */
+  margin: 0;
+}
+.line {
+  display: inline-block;
+  width: 1px;
+  height: 100%;
+  background: #409eff;
+}
+.container {
+  width: 100%;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  height: 47px;
+  background: rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
+  padding-left: 25px;
+}
+.worksheetnameblock {
+  font-size: 13px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  color: #000;
+  font-weight: bold;
+}
+.left,
+.right {
+  position: fixed;
+  width: 26px;
+  height: 47px;
+  background-color: #409eff;
+  cursor: pointer;
+}
+.left {
+  left: 0;
+  bottom: 0;
+  background-image: url(../img/arrow-left-bold.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  z-index: 1000;
+  background-position-y: center;
+}
+.right {
+  right: 0;
+  background-image: url(../img/arrow-right-bold.png);
+  background-size: 100%;
+  height: 47px;
+  background-repeat: no-repeat;
+  background-position-y: center;
+  bottom: 0;
+}
+
+.worksheetname {
+  /* display: inline-block; */
+  padding: 15px 15px;
+  user-select: none;
+  cursor: pointer;
+  flex-shrink: 0;
+  /* border-radius: 10px; */
+}
+.worksheetname:hover {
+  color: #fff;
+  background: #409eff;
+}
+.active {
+  color: #fff;
+  background: #409eff;
+}
+.worksheet {
+  padding-bottom: 50px;
+}

@@ -1,7 +1,7 @@
 var file;
 var progress = new Progress();
 function getFile(e) {
-  if (e.files[0].name.indexOf('.xlsm') === -1) {
+  if (e.files[0].name.indexOf('.xls') === -1) {
     alert('必须上传excel文件');
     e.value = '';
     return false;
@@ -111,7 +111,7 @@ Progress.prototype.hidden = function (e) {
   setTimeout(() => {
     document.querySelector('.dialog').style.display = 'none';
     document.querySelector('.success').style.display = 'block';
-    document.querySelector('.links').textContent = e;
+    document.querySelector('.links').textContent = '点击访问';
     document.querySelector('.links').setAttribute('href', e);
     this.clear();
   }, 900);
