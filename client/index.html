@@ -6,8 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="./css/style.css" />
+    <style>
+      .excelReview {
+        background: rgba(255, 255, 255, 0.2);
+        position: fixed;
+        color: #fff;
+        padding: 10px 15px;
+        cursor: pointer;
+        font-size: 14px;
+        border-radius: 10px;
+        right: 20px;
+        top: 30px;
+        text-decoration: none;
+      }
+      .excelReview:hover {
+        background: rgba(255, 255, 255, 0.4);
+      }
+    </style>
   </head>
   <body>
+    <a class="excelReview" href="./excel.html">excel转web预览</a>
     <div class="content">
       <h1>百途原型上传系统</h1>
       <span class="text">上传原型:</span>
@@ -25,7 +43,7 @@
       ></span>
       <div class="upload" onclick="startUpload()">开始上传</div>
       <div class="info" onclick="enterGitlab()">
-        <div class="version">version:0.0.1</div>
+        <div class="version">version:0.0.2</div>
         <div class="frame">frame:nestJs</div>
       </div>
     </div>

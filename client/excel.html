@@ -6,8 +6,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="./css/style.css" />
+    <style>
+      .success {
+        left: 208px;
+      }
+      .links {
+        top: 2px;
+        left: 135px;
+      }
+      .tips {
+        left: 286px;
+      }
+      .excelReview {
+        background: rgba(255, 255, 255, 0.2);
+        position: fixed;
+        color: #fff;
+        padding: 10px 15px;
+        cursor: pointer;
+        font-size: 14px;
+        border-radius: 10px;
+        right: 20px;
+        top: 30px;
+        text-decoration: none;
+      }
+      .excelReview:hover {
+        background: rgba(255, 255, 255, 0.4);
+      }
+    </style>
   </head>
   <body>
+    <a class="excelReview" href="./index.html">原型上传预览</a>
     <div class="content">
       <h1>百途接口文档预览系统</h1>
       <span class="text">上传原型:</span>
@@ -15,15 +43,13 @@
         <div id="uploadFile">点击上传</div>
       </span>
       <input class="file" accept=".xls*" type="file" onchange="getFile(this)" />
-      <div class="tips">
-        *上传文件仅限zip格式，zip根文件夹名称最好不要带中文
-      </div>
+      <div class="tips">*上传文件仅限.xls*格式</div>
       <span class="success"
         ><img src="./img/success.png" />上传成功!<a class="links"></a
       ></span>
       <div class="upload" onclick="startUpload()">开始上传</div>
       <div class="info" onclick="enterGitlab()">
-        <div class="version">version:0.0.1</div>
+        <div class="version">version:0.0.2</div>
         <div class="frame">frame:nestJs</div>
       </div>
     </div>

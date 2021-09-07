@@ -54,12 +54,22 @@ export class AppService {
     workbook.eachSheet(function (worksheet, sheetId) {
       let data = [];
       const defaultHeight = worksheet.properties.defaultRowHeight;
-      const defaultWidth = worksheet.properties.defaultColWidth;
-
+      const defaultWidth = worksheet.properties.defaultColWidth || 10;
       worksheet.eachRow(function (row, rowNumber) {
         var cellItem = [];
         row.eachCell({ includeEmpty: true }, function (cell, colNumber) {
           // 比对是不是合并单元格
+
+          // 文本颜色
+          let color;
+          if (
+            cell.style.font &&
+            cell.style.font.color &&
+            cell.style.font.color.argb
+          ) {
+            let color16 = cell.style.font.color.argb;
+            color = '#' + color16.substr(2, color16.length);
+          }
 
           if (cell.model.address === cell.master._address) {
             // 富文本干掉提取文字
@@ -79,6 +89,7 @@ export class AppService {
                 width: cell._column.width || defaultWidth,
                 height: row.height || defaultHeight,
                 address: cell.model.address,
+                color: color,
               });
             } else {
               // 普通文字
@@ -88,6 +99,7 @@ export class AppService {
                 width: cell._column.width || defaultWidth,
                 height: row.height || defaultHeight,
                 address: cell.model.address,
+                color: color,
               });
             }
           } else {
@@ -98,6 +110,7 @@ export class AppService {
               width: cell._column.width || defaultWidth,
               height: row.height || defaultHeight,
               address: cell.model.address,
+              color: color,
             });
           }
         });

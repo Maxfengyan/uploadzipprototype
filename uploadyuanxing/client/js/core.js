@@ -1,7 +1,6 @@
 var file;
 var progress = new Progress();
 function getFile(e) {
-  console.log(e.files);
   if (e.files && e.files[0]) {
     var name = e.files[0].name;
     file = e.files[0];

@@ -29,6 +29,7 @@
                 class="col"
                 :style="{
             width: col.width * 8 + 'px',
+            color: col.color
           }"
               >
                 <pre>{{ col.value }}</pre>
@@ -124,13 +125,6 @@
                     if (col.height > lastHeightSingle) {
                       lastHeightSingle = col.height;
                     }
-                    /* if (!lastHeight[index]) {
-                lastHeight[index] = col.height;
-              } else {
-                if (lastHeight[index] < col.height) {
-                  lastHeight[index] = col.height;
-                }
-              } */
                   });
                   lastHeight.push(lastHeightSingle);
                 });
